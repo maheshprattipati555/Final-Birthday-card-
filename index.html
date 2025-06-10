@@ -1,0 +1,964 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Happy Birthday Mady!</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">  
+  <style>  
+    body {  
+      margin: 0;  
+      font-family: 'Poppins', sans-serif;  
+      background: linear-gradient(135deg, #fffafc, #ffe4ec);  
+      color: #333;  
+      scroll-behavior: smooth;  
+      overflow-x: hidden;  
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="%23ff6b81" d="M12 2l2.39 6.36L21 9.51l-5.16 5.01L17.88 21 12 17.77 6.12 21l2.04-6.48L3 9.51l6.61-1.15L12 2z"/></svg>'), auto;  
+    }  h1 {  
+  font-family: 'Pacifico', cursive;  
+  font-size: 3.5rem;  
+  text-align: center;  
+  color: #ff6b81;  
+  margin: 60px 0 20px;  
+  animation: pop 2s ease-in-out forwards;  
+}  
+
+@keyframes pop {  
+  0% { transform: scale(0.5); opacity: 0; }  
+  100% { transform: scale(1); opacity: 1; }  
+}  
+
+.section {  
+  padding: 50px 20px;  
+  max-width: 900px;  
+  margin: auto;  
+  text-align: center;  
+  opacity: 0;  
+  animation: fadeIn 1s ease-in forwards;  
+  animation-delay: 0.5s;  
+  background: rgba(255, 255, 255, 0.8);  
+  border-radius: 15px;  
+  margin-bottom: 40px; /* Consistent spacing between sections */  
+}  
+
+@keyframes fadeIn {  
+  to { opacity: 1; }  
+}  
+
+/* Flippable Card */  
+.flip-card {  
+  perspective: 1000px;  
+  width: 300px;  
+  height: 400px;  
+  margin: 20px auto;  
+}  
+
+.flip-card-inner {  
+  position: relative;  
+  width: 100%;  
+  height: 100%;  
+  transition: transform 0.6s;  
+  transform-style: preserve-3d;  
+}  
+
+.flip-card:hover .flip-card-inner, .flip-card.clicked .flip-card-inner {  
+  transform: rotateY(180deg);  
+}  
+
+.flip-card-front, .flip-card-back {  
+  position: absolute;  
+  width: 100%;  
+  height: 100%;  
+  backface-visibility: hidden;  
+  border-radius: 15px;  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);  
+}  
+
+.flip-card-front {  
+  background: #ff6b81;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  color: white;  
+  font-size: 2rem;  
+  font-family: 'Pacifico', cursive;  
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);  
+}  
+
+.flip-card-back {  
+  background: #ffe4ec;  
+  transform: rotateY(180deg);  
+  padding: 20px;  
+  font-size: 1rem;  
+  color: #333;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  text-align: left;  
+}  
+
+/* 3D Wish Cube */  
+.wish-cube-container {  
+  perspective: 1000px;  
+  width: 300px;  
+  height: 450px;  
+  margin: 40px auto 120px; /* Retained for gap */  
+  padding: 20px;  
+}  
+
+.wish-cube {  
+  position: relative;  
+  width: 100%;  
+  height: 100%;  
+  transform-style: preserve-3d;  
+  transition: transform 0.5s;  
+}  
+
+.cube-face {  
+  position: absolute;  
+  width: 300px;  
+  height: 300px;  
+  border-radius: 10px;  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  background: #ffe4ec;  
+  color: #a8326f;  
+  font-family: 'Pacifico', cursive;  
+  font-size: 1.2rem;  
+  text-align: center;  
+  padding: 20px;  
+}  
+
+.cube-face.front { transform: rotateY(0deg) translateZ(120px); } /* Reduced translateZ */  
+.cube-face.right { transform: rotateY(90deg) translateZ(120px); }  
+.cube-face.back { transform: rotateY(180deg) translateZ(120px); }  
+.cube-face.left { transform: rotateY(-90deg) translateZ(120px); }  
+
+/* Photo Gallery */  
+#photo-gallery {  
+  margin-top: 40px; /* Retained for gap */  
+}  
+
+.photo-gallery {  
+  display: flex;  
+  overflow-x: auto;  
+  gap: 20px;  
+  padding: 15px;  
+  scroll-snap-type: x mandatory;  
+  scrollbar-width: thin;  
+  scrollbar-color: #ff6b81 #f0f0f0;  
+}  
+
+.photo-gallery::-webkit-scrollbar {  
+  height: 8px;  
+}  
+
+.photo-gallery::-webkit-scrollbar-thumb {  
+  background: #ff6b81;  
+  border-radius: 4px;  
+}  
+
+.photo-gallery img {  
+  height: 300px;  
+  border-radius: 20px;  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);  
+  scroll-snap-align: center;  
+  object-fit: cover;  
+  transition: transform 0.3s, box-shadow 0.3s;  
+}  
+
+.photo-gallery img:hover {  
+  transform: scale(1.1);  
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.5);  
+}  
+
+/* Polaroid Meme Gallery */  
+.memes {  
+  display: flex;  
+  flex-wrap: wrap;  
+  gap: 20px;  
+  justify-content: center;  
+  padding: 20px;  
+}  
+
+.polaroid {  
+  background: #fff;  
+  padding: 10px 10px 30px;  
+  border-radius: 5px;  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);  
+  transform: rotate(-5deg);  
+  transition: transform 0.3s, box-shadow 0.3s;  
+  position: relative;  
+  width: 200px;  
+}  
+
+.polaroid:nth-child(even) {  
+  transform: rotate(5deg);  
+}  
+
+.polaroid:hover {  
+  transform: scale(1.1) rotate(0deg);  
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.5);  
+  z-index: 10;  
+}  
+
+.polaroid img {  
+  width: 100%;  
+  border-radius: 5px;  
+}  
+
+.polaroid-caption {  
+  text-align: center;  
+  font-size: 0.9rem;  
+  margin-top: 10px;  
+  color: #333;  
+}  
+
+/* Memory Match Game */  
+.match-game {  
+  display: grid;  
+  grid-template-columns: repeat(4, 100px);  
+  gap: 10px;  
+  justify-content: center;  
+  padding: 20px;  
+}  
+
+.match-card {  
+  perspective: 1000px;  
+  width: 100px;  
+  height: 100px;  
+}  
+
+.match-card-inner {  
+  position: relative;  
+  width: 100%;  
+  height: 100%;  
+  transition: transform 0.6s;  
+  transform-style: preserve-3d;  
+}  
+
+.match-card.flipped .match-card-inner {  
+  transform: rotateY(180deg);  
+}  
+
+.match-card-front, .match-card-back {  
+  position: absolute;  
+  width: 100%;  
+  height: 100%;  
+  backface-visibility: hidden;  
+  border-radius: 10px;  
+}  
+
+.match-card-front {  
+  background: #ff6b81;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  color: white;  
+  font-size: 2rem;  
+}  
+
+.match-card-back {  
+  transform: rotateY(180deg);  
+}  
+
+.match-card-back img {  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  border-radius: 10px;  
+}  
+
+.countdown {  
+  font-size: 1.5rem;  
+  margin-top: 20px;  
+  font-weight: bold;  
+  color: #ff6b81;  
+}  
+
+.hidden-message {  
+  background: #ffe4ec;  
+  padding: 20px;  
+  border-radius: 15px;  
+  margin-top: 20px;  
+  display: none;  
+  font-size: 1.2rem;  
+  line-height: 1.6;  
+}  
+
+.reveal-btn, .firework-btn {  
+  padding: 12px 24px;  
+  background-color: #ff6b81;  
+  border: none;  
+  color: white;  
+  font-weight: bold;  
+  border-radius: 12px;  
+  cursor: pointer;  
+  margin-top: 20px;  
+  transition: transform 0.2s;  
+  position: relative;  
+}  
+
+.reveal-btn:hover:after, .firework-btn:hover:after {  
+  content: attr(data-tooltip);  
+  position: absolute;  
+  top: -30px;  
+  left: 50%;  
+  transform: translateX(-50%);  
+  background: rgba(0,0,0,0.7);  
+  color: white;  
+  padding: 5px 10px;  
+  border-radius: 5px;  
+  font-size: 0.9rem;  
+}  
+
+.reveal-btn:hover, .firework-btn:hover {  
+  transform: scale(1.05);  
+}  
+
+.timeline {  
+  background: #fff0f5;  
+  margin-top: 60px;  
+  padding: 30px;  
+  border-radius: 15px;  
+}  
+
+.timeline h2 {  
+  color: #ff6b81;  
+  font-family: 'Pacifico', cursive;  
+  margin-bottom: 20px;  
+}  
+
+.timeline-item {  
+  margin-bottom: 30px;  
+  text-align: left;  
+  border-left: 4px solid #ff6b81;  
+  padding-left: 15px;  
+  opacity: 0;  
+  transform: translateX(-50px);  
+  transition: opacity 0.5s, transform 0.5s;  
+}  
+
+.timeline-item.visible {  
+  opacity: 1;  
+  transform: translateX(0);  
+}  
+
+.timeline-item h3 {  
+  margin: 0;  
+  color: #a8326f;  
+  font-size: 1.3rem;  
+}  
+
+.timeline-item p {  
+  margin: 5px 0 0;  
+  font-size: 1rem;  
+}  
+
+.back-to-top {  
+  position: fixed;  
+  bottom: 20px;  
+  right: 20px;  
+  background: #ff6b81;  
+  color: white;  
+  border: none;  
+  border-radius: 50%;  
+  width: 50px;  
+  height: 50px;  
+  font-size: 1.2rem;  
+  cursor: pointer;  
+  display: none;  
+  opacity: 0.9;  
+}  
+
+.back-to-top.show {  
+  display: block;  
+}  
+
+.wish-input {  
+  width: 80%;  
+  max-width: 500px;  
+  height: 100px;  
+  border-radius: 10px;  
+  border: 2px solid #ff6b81;  
+  padding: 10px;  
+  font-family: 'Poppins', sans-serif;  
+  resize: none;  
+  margin-top: 20px;  
+}  
+
+.wish-message {  
+  font-size: 1.5rem;  
+  color: #ff6b81;  
+  margin-top: 20px;  
+}  
+
+.progress-bar {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 0;  
+  height: 5px;  
+  background: linear-gradient(to right, #ff6b81, #ff4081);  
+  z-index: 1000;  
+  transition: width 0.3s;  
+}  
+
+.loader {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  background: #fffafc;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  z-index: 1000;  
+  opacity: 1;  
+  transition: opacity 0.5s;  
+}  
+
+.loader.hidden {  
+  opacity: 0;  
+  pointer-events: none;  
+}  
+
+.spinner {  
+  border: 8px solid #f3f3f3;  
+  border-top: 8px solid #ff6b81;  
+  border-radius: 50%;  
+  width: 60px;  
+  height: 60px;  
+  animation: spin 1s linear infinite;  
+}  
+
+@keyframes spin {  
+  0% { transform: rotate(0deg); }  
+  100% { transform: rotate(360deg); }  
+}  
+
+.typewriter {  
+  font-size: 1.5rem;  
+  overflow: hidden;  
+  border-right: 0.15em solid #ff6b81;  
+  white-space: nowrap;  
+  margin: 0 auto;  
+  letter-spacing: 0.05em;  
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;  
+}  
+
+@keyframes typing {  
+  from { width: 0; }  
+  to { width: 100%; }  
+}  
+
+@keyframes blink-caret {  
+  from, to { border-color: transparent; }  
+  50% { border-color: #ff6b81; }  
+}  
+
+.quiz-container {  
+  text-align: left;  
+  max-width: 600px;  
+  margin: 20px auto;  
+}  
+
+.quiz-option {  
+  margin: 10px 0;  
+  padding: 10px;  
+  background: #ffe4ec;  
+  border-radius: 10px;  
+  cursor: pointer;  
+  transition: background 0.3s;  
+}  
+
+.quiz-option:hover {  
+  background: #ff6b81;  
+  color: white;  
+}  
+
+.confetti-cannon {  
+  width: 150px;  
+  cursor: pointer;  
+  transition: transform 0.3s;  
+}  
+
+.confetti-cannon:hover {  
+  transform: scale(1.1);  
+}  
+
+.wish-jar {  
+  width: 200px;  
+  margin: 20px auto;  
+  position: relative;  
+}  
+
+.wish-note {  
+  position: absolute;  
+  top: 50%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+  background: #ffe4ec;  
+  padding: 10px;  
+  border-radius: 5px;  
+  font-size: 0.9rem;  
+  color: #a8326f;  
+  max-width: 150px;  
+  text-align: center;  
+  animation: glow 1.5s infinite;  
+}  
+
+@keyframes glow {  
+  0%, 100% { box-shadow: 0 0 10px #ff6b81; }  
+  50% { box-shadow: 0 0 20px #ff4081; }  
+}  
+
+@media (max-width: 600px) {  
+  h1 {  
+    font-size: 2.5rem;  
+  }  
+  .wish-cube-container {  
+    width: 200px;  
+    height: 200px;  
+    margin: 40px auto 80px; /* Retained for gap */  
+  }  
+  .cube-face {  
+    width: 200px;  
+    height: 200px;  
+    font-size: 1rem;  
+  }  
+  .cube-face.front { transform: rotateY(0deg) translateZ(80px); } /* Reduced translateZ */  
+  .cube-face.right { transform: rotateY(90deg) translateZ(80px); }  
+  .cube-face.back { transform: rotateY(180deg) translateZ(80px); }  
+  .cube-face.left { transform: rotateY(-90deg) translateZ(80px); }  
+  .polaroid {  
+    width: 150px;  
+  }  
+  .photo-gallery img {  
+    height: 200px;  
+  }  
+  .section {  
+    padding: 30px 10px;  
+  }  
+  .flip-card {  
+    width: 250px;  
+    height: 350px;  
+  }  
+  .match-game {  
+    grid-template-columns: repeat(4, 60px);  
+  }  
+  .match-card {  
+    width: 60px;  
+    height: 60px;  
+  }  
+}
+
+  </style>  
+</head>  
+<body>  
+  <!-- Progress Bar -->  
+  <div class="progress-bar" id="progressBar"></div>    <!-- Loading Animation -->    <div class="loader" id="loader">  
+    <div class="spinner"></div>  
+  </div>    <h1>Happy Birthday Mady!</h1>    <!-- Flippable Welcome Card -->    <div class="section flip-card" id="flipCard">  
+    <div class="flip-card-inner">  
+      <div class="flip-card-front">  
+        <p>Happy Birthday, Mady!</p>  
+      </div>  
+      <div class="flip-card-back">  
+        <p>  
+          Hi Mady! Wowww, you have identified one of the secrets, you found it. A very Happy Birthday to youuuuu!!!!! you're 17 now!! not telling you have become old but yeah you are growing old 😂😂(Ofc had to keep 2)  
+        </p>  
+      </div>  
+    </div>  
+  </div>    <div class="section">  
+    <p id="randomWish" class="typewriter"></p>  
+  </div>    <!-- 3D Wish Cube -->    <div class="section wish-cube-container">  
+    <h2>Spin Your Birthday Wishes!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click the cube to see special wishes!</p>  
+    <div class="wish-cube" id="wishCube">  
+      <div class="cube-face front">Hello madam garu, puttina roju shubakankshalu, mee roju motham manchiga jaruguthundhani ashisthunnanu! 🤗</div>  
+      <div class="cube-face right">To Mady, the roast queen, A very happy Birthday to you! 👑</div>  
+      <div class="cube-face back">Thanks for everything you have done for me!! don't say you didn't do anything, we both know that you have done alot. 🚀</div>  
+      <div class="cube-face left">You’re my forever vibe-lifter, always keep smiling and stay happy 💖</div>  
+    </div>  
+  </div>    <!-- Memory Photo Gallery -->    <div class="section" id="photo-gallery">  
+    <h2 style="font-family: 'Pacifico', cursive; color: #ff4081; font-size: 2.5em; margin-bottom: 30px;">Our Memories</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Scroll side to side to relive our moments!</p>  
+    <div class="photo-gallery">  
+      <img src="photo1.jpg" alt="Photo 1">  
+      <img src="photo2.jpg" alt="Photo 2">  
+      <img src="photo3.jpg" alt="Photo 3">  
+      <img src="photo4.jpg" alt="Photo 4">  
+      <img src="photo5.jpg" alt="Photo 5">  
+    </div>  
+  </div>    <!-- Polaroid Meme Gallery -->    <div class="section memes">  
+    <h2 style="font-family: 'Pacifico', cursive; color: #ff4081; font-size: 2.3em; margin-bottom: 30px;">Our Legendary Meme Dump</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click the polaroids to enlarge our funniest memes!</p>  
+    <div class="memes">  
+      <div class="polaroid"><img src="meme1.jpg" alt="Meme 1"><div class="polaroid-caption">LOL Moment #1</div></div>  
+      <div class="polaroid"><img src="meme2.jpg" alt="Meme 2"><div class="polaroid-caption">Epic Meme #2</div></div>  
+      <div class="polaroid"><img src="meme3.jpg" alt="Meme 3"><div class="polaroid-caption">Classic Mady Meme</div></div>  
+      <div class="polaroid"><img src="meme4.jpg" alt="Meme 4"><div class="polaroid-caption">Hahaha #4</div></div>  
+      <div class="polaroid"><img src="meme5.jpg" alt="Meme 5"><div class="polaroid-caption">Best Meme Ever!</div></div>  
+    </div>  
+  </div>    <!-- Confetti Cannon -->    <div class="section">  
+    <h2>Fire the Confetti Cannon!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click the cannon for a confetti blast!</p>  
+    <img src="Confetti Canon.jpg" class="confetti-cannon" onclick="fireCannon()" alt="Confetti Cannon">  
+  </div>    <!-- Firework Show -->    <div class="section">  
+    <h2>Launch a Firework Show!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click to light up the sky!</p>  
+    <button class="firework-btn" onclick="launchFireworks()" data-tooltip="Start the show!">Launch Fireworks</button>  
+  </div>    <!-- Memory Match Game -->    <div class="section match-game">  
+    <h2>Memory Match Game!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click cards to match our memory photos!</p>  
+    <div id="matchGame"></div>  
+  </div>    <!-- Wish Jar -->    <div class="section">  
+    <h2>Add Your Birthday Wish!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Type your wish and add it to the jar!</p>  
+    <textarea id="wishInput" class="wish-input" placeholder="Type your birthday wish here..."></textarea>  
+    <button class="reveal-btn" onclick="addWishToJar()" data-tooltip="Add to jar!">Add to Jar</button>  
+    <div id="wishMessage" class="wish-message"></div>  
+    <img src="Wish Jar.jpg" class="wish-jar" alt="Wish Jar">  
+    <div id="wishNote" class="wish-note" style="display: none;"></div>  
+  </div>    <div class="section">  
+    <h2>Countdown to Being Called an Aunty (18th Birthday)</h2>  
+    <div id="countdown" class="countdown">Calculating...</div>  
+  </div>    <div class="section">  
+    <h2>Hidden Message Just for You</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click the button to read a special message!</p>  
+    <button class="reveal-btn" onclick="document.getElementById('hidden').style.display='block'" data-tooltip="Click to reveal!">Reveal</button>  
+    <div id="hidden" class="hidden-message">  
+      I'm very sorry if I have ever hurt you, and I know I did many times — I’m truly sorry for that.    
+      I’ve been struggling to handle my anger lately, but I promise to work on it.    
+      Thank you for listening to all the nonsense I ramble about at midnight and all my random stories.    
+      Thanks for everything you’ve done — no friend has ever done this much for me.    
+      You’re like a catalyst, boosting my efficiency and happiness.    
+      I really, really, really wish we both get into the same university.    
+      I want to talk more to you, monkey!!!  
+    </div>  
+  </div>    <div class="section timeline">  
+    <h2>Our Timeline</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Scroll to see our unforgettable moments!</p>  
+    <div class="timeline-item">  
+      <h3>5th Grade</h3>  
+      <p>Back then, neither of us had any idea we would end up becoming such close friends. From strangers who didn’t even know each other’s names to sharing a bond this strong — who would've thought?</p>  
+    </div>  
+    <div class="timeline-item">  
+      <h3>9th Grade</h3>  
+      <p>Remember that math assembly meet? Everyone left the call, but we stayed and talked — really talked — for the first time. That conversation changed everything. From that moment on, we started getting to know each other, chatting daily, and eventually formed the legendary Jaathiratnalu group on June 17, 2022.</p>  
+    </div>  
+    <div class="timeline-item">  
+      <h3>10th Grade</h3>  
+      <p>10th was stressful for both of us, but even through that, you supported me. We kept texting and helping each other stay sane. Do you remember when Praveen sir made us sit together for about two months? We didn’t talk much offline, but our online chats meant the world to me.</p>  
+    </div>  
+    <div class="timeline-item">  
+      <h3>1st Year</h3>  
+      <p>I wished so hard that we'd end up in the same college — and we did. You helped me so much in 1st year. You encouraged me when I got low marks, stayed up talking to me till 3AM on Saturdays, listened to all my random stories, and kept me from feeling lonely. Thank you for being there in every way possible.</p>  
+    </div>  
+    <div class="timeline-item">  
+      <h3>2nd Year</h3>  
+      <p>In 2nd year, we started meeting on the terrace and finally had more face-to-face conversations. The teasing while walking back to class — "right thesukovali, chusukoni vellu, jagratha kanipiyyadhu kadha" — those moments still make me smile. Even though we didn’t talk much offline sometimes, the memories we made are unforgettable. And oh, Ganesh Chaturthi — I actually danced! That day was unforgettable. Thank you for all of it.</p>  
+    </div>  
+    <div class="timeline-item">  
+      <h4>No heading for this</h4>  
+      <p>Thankyou for every thing Mady!! board exams board exams antu 10th ayyipoyindhi; weekend tests, revision, pratice antu 1st year ayipoyindhi, record books, IPE, IIT, antu 2nd ayipoyindhi; inka inka antu 3AM ayipoyedhi; em ledhu em ledhu antu unna topics anni ayipoyeyi kani nuvvu mathram nannu chi po ani anale andhuku thanks a lot; na sollu vintu, na chatha jokulu vintu, na chillar veshalu bharisthu nannu alone ga feel avvakunda chesinandhuku thank you; nenu ninnu irritate chesina enni irritating stickers pettina, enni sarlu ninnu old annakani nuvvu eppudu aravaledhu andhuku thank you; Eppudu godavalina first matladi solve cheddham ani mundhuki vacchinandhuku thank you; nenu entha oveacting chesina patient ga unnandhuku thank you; idhantha ok kani ippudu next sentence ki neeku thankyou cheppanu; intha manchi kothini naku Best friend ga icchinandhuku thankyou devuda!!Inn thankyou lu cheppinandhuku nuvvu naku oka thankyou cheppali 😂😂( ofc, had to keep 2 )</p>  
+    </div>  
+  </div>    <!-- Memory Quiz -->    <div class="section quiz-container">  
+    <h2>Let's see what you know about this🐖🐷!</h2>  
+    <p style="font-size: 1rem; color: #a8326f;">Click an answer to test your memory!</p>  
+    <p id="quizQuestion"></p>  
+    <div id="quizOptions"></div>  
+    <p id="quizFeedback" style="color: #ff6b81; margin-top: 20px;"></p>  
+    <button class="reveal-btn" onclick="nextQuizQuestion()" data-tooltip="Try another question!">Next Question</button>  
+  </div>    <div class="section">  
+    <button class="reveal-btn" onclick="window.print()" data-tooltip="Save as PDF!">Download as PDF</button>  
+  </div>  <button class="back-to-top" id="backToTop" title="Back to Top">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>    <script>  
+    // Random Birthday Wishes  
+    const wishes = [  
+      "You’re the most irritating yet most wonderful monkey I know!"  
+    ];  
+    let wishIndex = 0;  
+    const randomWish = document.getElementById('randomWish');  
+    function typeWish() {  
+      randomWish.textContent = wishes[wishIndex];  
+      wishIndex = (wishIndex + 1) % wishes.length;  
+      setTimeout(typeWish, 5000);  
+    }  
+    typeWish();  
+  
+    // Flippable Card  
+    document.getElementById('flipCard').addEventListener('click', () => {  
+      document.querySelector('.flip-card').classList.toggle('clicked');  
+    });  
+  
+    // 3D Wish Cube  
+    let cubeAngle = 0;  
+    document.getElementById('wishCube').addEventListener('click', () => {  
+      cubeAngle += 90;  
+      document.getElementById('wishCube').style.transform = `rotateY(${cubeAngle}deg)`; // Fixed syntax  
+    });  
+  
+    // Confetti Cannon  
+    function fireCannon() {  
+      confetti({  
+        particleCount: 200,  
+        spread: 120,  
+        origin: { y: 0.5 },  
+        colors: ['#ff6b81', '#ff4081', '#a8326f', '#ffe4ec'],  
+      });  
+    }  
+  
+    // Firework Show  
+    function launchFireworks() {  
+      const colors = ['#ff6b81', '#ff4081', '#a8326f', '#ffe4ec', '#fff0f5'];  
+      confetti({  
+        particleCount: 100,  
+        spread: 120,  
+        origin: { y: 0.2 },  
+        colors: [colors[Math.floor(Math.random() * colors.length)]],  
+        shapes: ['circle', 'square'],  
+        scalar: 1.2,  
+      });  
+      setTimeout(() => {  
+        confetti({  
+          particleCount: 80,  
+          spread: 100,  
+          origin: { y: 0.4 },  
+          colors: [colors[Math.floor(Math.random() * colors.length)]],  
+        });  
+      }, 500);  
+      setTimeout(() => {  
+        confetti({  
+          particleCount: 60,  
+          spread: 80,  
+          origin: { y: 0.6 },  
+          colors: [colors[Math.floor(Math.random() * colors.length)]],  
+        });  
+      }, 1000);  
+    }  
+  
+    // Memory Match Game  
+    const matchImages = ['photo1.jpg', 'photo1.jpg', 'photo2.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg', 'photo4.jpg', 'photo4.jpg'];  
+    let flipped = [];  
+    let matched = [];  
+    function shuffle(array) {  
+      for (let i = array.length - 1; i > 0; i--) {  
+        const j = Math.floor(Math.random() * (i + 1));  
+        [array[i], array[j]] = [array[j], array[i]];  
+      }  
+    }  
+    function initMatchGame() {  
+      shuffle(matchImages);  
+      const game = document.getElementById('matchGame');  
+      matchImages.forEach((img, index) => {  
+        const card = document.createElement('div');  
+        card.className = 'match-card';  
+        card.innerHTML = `  
+          <div class="match-card-inner">  
+            <div class="match-card-front">?</div>  
+            <div class="match-card-back"><img src="${img}" alt="Memory"></div>  
+          </div>  
+        `;  
+        card.onclick = () => flipCard(index);  
+        game.appendChild(card);  
+      });  
+    }  
+    function flipCard(index) {  
+      if (flipped.length < 2 && !flipped.includes(index) && !matched.includes(index)) {  
+        const card = document.getElementsByClassName('match-card')[index];  
+        card.classList.add('flipped');  
+        flipped.push(index);  
+        if (flipped.length === 2) {  
+          setTimeout(checkMatch, 1000);  
+        }  
+      }  
+    }  
+    function checkMatch() {  
+      const [first, second] = flipped;  
+      if (matchImages[first] === matchImages[second]) {  
+        matched.push(first, second);  
+        if (matched.length === matchImages.length) {  
+          alert('You won the memory match game! 🎉');  
+        }  
+      } else {  
+        document.getElementsByClassName('match-card')[first].classList.remove('flipped');  
+        document.getElementsByClassName('match-card')[second].classList.remove('flipped');  
+      }  
+      flipped = [];  
+    }  
+    initMatchGame();  
+  
+    // Wish Jar  
+    function addWishToJar() {  
+      const wish = document.getElementById('wishInput').value.trim();  
+      if (wish) {  
+        localStorage.setItem('birthdayWish', wish);  
+        document.getElementById('wishMessage').textContent = 'Your wish is in the jar! I’ll see it soon! 🎉';  
+        document.getElementById('wishNote').textContent = wish;  
+        document.getElementById('wishNote').style.display = 'block';  
+        document.getElementById('wishInput').value = '';  
+        fireCannon();  
+      } else {  
+        document.getElementById('wishMessage').textContent = 'Please type a wish first!';  
+      }  
+    }  
+  
+    // Countdown Timer  
+    function updateCountdown() {  
+      const targetDate = new Date("2026-03-17T00:00:00").getTime();  
+      const now = new Date().getTime();  
+      const distance = targetDate - now;  
+      const countdown = document.getElementById("countdown");  
+      if (distance <= 0) {  
+        countdown.innerHTML = "Happy 18th Birthday! You're officially an aunty! 🎉";  
+        return;  
+      }  
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s left!`; // Fixed template literal  
+    }  
+    updateCountdown();  
+    setInterval(updateCountdown, 1000);  
+  
+    // Memory Quiz  
+    const quizQuestions = [  
+      {  
+        question: "what was the reason I told praveen sir to escape from farewell to click pictures???? ",  
+        options: ["stomach ache", "no reason he just allowed", "washroom"],  
+        correct: 2, // Adjusted to match "washroom" (index 2)  
+      },  
+      {  
+        question: "Who is younger in both of us?",  
+        options: ["You", "Me", "Manakendhuku ivanni, cheppu"],  
+        correct: 2,  
+      },  
+      {  
+        question: "In which book of mine did you correct speeling mistake i did( choose the subject )",  
+        options: ["Telugu", "social", "English"],  
+        correct: 0, // Adjusted to match "Telugu" (index 0)  
+      },  
+    ];  
+    let currentQuiz = 0;  
+    function displayQuiz() {  
+      const q = quizQuestions[currentQuiz];  
+      document.getElementById('quizQuestion').textContent = q.question;  
+      document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) =>   
+        `<div class="quiz-option" onclick="checkAnswer(${i})">${opt}</div>` // Fixed template literal  
+      ).join('');  
+      document.getElementById('quizFeedback').textContent = '';  
+    }  
+    function checkAnswer(index) {  
+      const q = quizQuestions[currentQuiz];  
+      document.getElementById('quizFeedback').textContent = index === q.correct ?   
+        'Yay! You got it right! 🎉' : 'Oops, try again next question!';  
+      fireCannon();  
+    }  
+    function nextQuizQuestion() {  
+      currentQuiz = (currentQuiz + 1) % quizQuestions.length;  
+      displayQuiz();  
+    }  
+    displayQuiz();  
+  
+    // Timeline Animation  
+    function animateTimeline() {  
+      const items = document.querySelectorAll('.timeline-item');  
+      items.forEach((item, index) => {  
+        const rect = item.getBoundingClientRect();  
+        if (rect.top <= window.innerHeight * 0.8) {  
+          item.classList.add('visible');  
+          item.style.animationDelay = `${index * 0.2}s`; // Fixed template literal  
+        }  
+      });  
+    }  
+    window.addEventListener('scroll', animateTimeline);  
+  
+    // Progress Bar  
+    window.addEventListener('scroll', () => {  
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;  
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+      const scrolled = (winScroll / height) * 100;  
+      document.getElementById('progressBar').style.width = scrolled + '%';  
+    });  
+  
+    // Back to Top Button  
+    const backToTop = document.getElementById('backToTop');  
+    window.addEventListener('scroll', () => {  
+      if (window.scrollY > 300) {  
+        backToTop.classList.add('show');  
+      } else {  
+        backToTop.classList.remove('show');  
+      }  
+    });  
+    backToTop.addEventListener('click', () => {  
+      window.scrollTo({ top: 0, behavior: 'smooth' });  
+    });  
+  
+    // Improved Loading Animation  
+    window.addEventListener('load', () => {  
+      const images = document.querySelectorAll('img');  
+      let loadedImages = 0;  
+      const totalImages = images.length;  
+      const loader = document.getElementById('loader');  
+  
+      // Fallback timeout to hide loader after 5 seconds  
+      const timeout = setTimeout(() => {  
+        console.log('Loader timeout triggered. Hiding loader after 5 seconds.');  
+        loader.classList.add('hidden');  
+        animateTimeline();  
+      }, 5000);  
+  
+      if (totalImages === 0) {  
+        // No images to load, hide loader after a minimum delay  
+        setTimeout(() => {  
+          clearTimeout(timeout);  
+          console.log('No images to load. Hiding loader.');  
+          loader.classList.add('hidden');  
+          animateTimeline();  
+        }, 1000);  
+        return;  
+      }  
+  
+      images.forEach((img, index) => {  
+        if (img.complete) {  
+          loadedImages++;  
+          console.log(`Image ${img.src} already loaded. Progress: ${loadedImages}/${totalImages}`);  
+          if (loadedImages === totalImages) {  
+            clearTimeout(timeout);  
+            console.log('All images loaded. Hiding loader.');  
+            loader.classList.add('hidden');  
+            animateTimeline();  
+          }  
+        } else {  
+          img.addEventListener('load', () => {  
+            loadedImages++;  
+            console.log(`Image ${img.src} loaded successfully. Progress: ${loadedImages}/${totalImages}`);  
+            if (loadedImages === totalImages) {  
+              clearTimeout(timeout);  
+              console.log('All images loaded. Hiding loader.');  
+              loader.classList.add('hidden');  
+              animateTimeline();  
+            }  
+          });  
+          img.addEventListener('error', () => {  
+            loadedImages++;  
+            console.error(`Failed to load image ${img.src}. Progress: ${loadedImages}/${totalImages}`);  
+            if (loadedImages === totalImages) {  
+              clearTimeout(timeout);  
+              console.log('All images processed (with errors). Hiding loader.');  
+              loader.classList.add('hidden');  
+              animateTimeline();  
+            }  
+          });  
+        }  
+      });  
+    });  
+  </script>  </body>  
+
+
